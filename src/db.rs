@@ -72,10 +72,13 @@ impl JiraDatabase {
             .epics
             .get_mut(&epic_id)
             .ok_or(anyhow::anyhow!("Epic not found"))?;
-        epic.stories
+
+        let story_index = epic
+            .stories
             .iter()
             .position(|&id| id == story_id)
             .ok_or(anyhow::anyhow!("Story not found in epic"))?;
+        epic.stories.remove(story_index);
 
         db_state.stories.remove(&story_id);
 
@@ -351,7 +354,7 @@ mod tests {
         let expected_last_id = 2;
 
         assert_eq!(db_state.last_item_id, expected_last_id);
-        assert!(db_state
+        assert!(!db_state
             .epics
             .get(&epic_id)
             .unwrap()
