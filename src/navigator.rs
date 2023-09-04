@@ -76,7 +76,6 @@ impl Navigator {
                     .context("Failed to create story")?;
             }
             Action::UpdateStoryStatus { story_id } => {
-                // prompt the user to update status and persist it in the database
                 let status = (self.prompts.update_status)();
                 if let Some(status) = status {
                     self.db
@@ -103,12 +102,12 @@ impl Navigator {
         Ok(())
     }
 
-    // Private functions used for testing
-
+    #[allow(dead_code)]
     fn get_page_count(&self) -> usize {
         self.pages.len()
     }
 
+    #[allow(dead_code)]
     fn set_prompts(&mut self, prompts: Prompts) {
         self.prompts = prompts;
     }

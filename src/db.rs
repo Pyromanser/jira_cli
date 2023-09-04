@@ -145,6 +145,7 @@ pub mod test_utils {
     }
 
     impl MockDB {
+        #[allow(dead_code)]
         pub fn new() -> Self {
             Self {
                 last_written_state: RefCell::new(DBState {

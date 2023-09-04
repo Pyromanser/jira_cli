@@ -11,3 +11,7 @@ pub fn get_user_input() -> String {
 pub fn get_trimed_user_input() -> String {
     get_user_input().trim().to_owned()
 }
+
+pub fn wait_for_key_press() {
+    io::stdin().read_line(&mut String::new()).unwrap();
+}
