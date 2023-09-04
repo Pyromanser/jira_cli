@@ -233,7 +233,7 @@ mod tests {
             database: Box::new(MockDB::new()),
         });
         let epic_id = db
-            .create_epic(Epic::new("".to_owned(), "".to_owned()))
+            .create_epic(Epic::new(String::new(), String::new()))
             .unwrap();
 
         let mut nav = Navigator::new(Rc::clone(&db));
@@ -259,7 +259,7 @@ mod tests {
             database: Box::new(MockDB::new()),
         });
         let epic_id = db
-            .create_epic(Epic::new("".to_owned(), "".to_owned()))
+            .create_epic(Epic::new(String::new(), String::new()))
             .unwrap();
 
         let mut nav = Navigator::new(Rc::clone(&db));
@@ -281,7 +281,7 @@ mod tests {
             database: Box::new(MockDB::new()),
         });
         let epic_id = db
-            .create_epic(Epic::new("".to_owned(), "".to_owned()))
+            .create_epic(Epic::new(String::new(), String::new()))
             .unwrap();
 
         let mut nav = Navigator::new(Rc::clone(&db));
@@ -307,10 +307,10 @@ mod tests {
             database: Box::new(MockDB::new()),
         });
         let epic_id = db
-            .create_epic(Epic::new("".to_owned(), "".to_owned()))
+            .create_epic(Epic::new(String::new(), String::new()))
             .unwrap();
         let story_id = db
-            .create_story(Story::new("".to_owned(), "".to_owned()), epic_id)
+            .create_story(Story::new(String::new(), String::new()), epic_id)
             .unwrap();
 
         let mut nav = Navigator::new(Rc::clone(&db));
@@ -336,10 +336,10 @@ mod tests {
             database: Box::new(MockDB::new()),
         });
         let epic_id = db
-            .create_epic(Epic::new("".to_owned(), "".to_owned()))
+            .create_epic(Epic::new(String::new(), String::new()))
             .unwrap();
         let story_id = db
-            .create_story(Story::new("".to_owned(), "".to_owned()), epic_id)
+            .create_story(Story::new(String::new(), String::new()), epic_id)
             .unwrap();
 
         let mut nav = Navigator::new(Rc::clone(&db));

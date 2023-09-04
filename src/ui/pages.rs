@@ -10,7 +10,7 @@ use crate::models::Action;
 
 mod page_helpers;
 
-use page_helpers::*;
+use page_helpers::get_column_string;
 
 pub trait Page {
     fn draw_page(&self) -> Result<()>;
@@ -33,7 +33,7 @@ impl Page for HomePage {
             let id_col = get_column_string(&id.to_string(), 11);
             let name_col = get_column_string(&epic.name, 32);
             let status_col = get_column_string(&epic.status.to_string(), 17);
-            println!("{} | {} | {}", id_col, name_col, status_col);
+            println!("{id_col} | {name_col} | {status_col}");
         }
 
         println!();
@@ -101,7 +101,7 @@ impl Page for EpicDetail {
             let id_col = get_column_string(&id.to_string(), 11);
             let name_col = get_column_string(&story.name, 32);
             let status_col = get_column_string(&story.status.to_string(), 17);
-            println!("{} | {} | {}", id_col, name_col, status_col);
+            println!("{id_col} | {name_col} | {status_col}");
         }
 
         println!();
@@ -233,7 +233,7 @@ mod tests {
                 database: Box::new(MockDB::new()),
             });
 
-            let epic = Epic::new("".to_owned(), "".to_owned());
+            let epic = Epic::new(String::new(), String::new());
 
             let epic_id = db.create_epic(epic).unwrap();
 
@@ -275,7 +275,7 @@ mod tests {
                 database: Box::new(MockDB::new()),
             });
             let epic_id = db
-                .create_epic(Epic::new("".to_owned(), "".to_owned()))
+                .create_epic(Epic::new(String::new(), String::new()))
                 .unwrap();
 
             let page = EpicDetail { epic_id, db };
@@ -288,7 +288,7 @@ mod tests {
                 database: Box::new(MockDB::new()),
             });
             let epic_id = db
-                .create_epic(Epic::new("".to_owned(), "".to_owned()))
+                .create_epic(Epic::new(String::new(), String::new()))
                 .unwrap();
 
             let page = EpicDetail { epic_id, db };
@@ -312,10 +312,10 @@ mod tests {
             });
 
             let epic_id = db
-                .create_epic(Epic::new("".to_owned(), "".to_owned()))
+                .create_epic(Epic::new(String::new(), String::new()))
                 .unwrap();
             let story_id = db
-                .create_story(Story::new("".to_owned(), "".to_owned()), epic_id)
+                .create_story(Story::new(String::new(), String::new()), epic_id)
                 .unwrap();
 
             let page = EpicDetail { epic_id, db };
@@ -375,10 +375,10 @@ mod tests {
             });
 
             let epic_id = db
-                .create_epic(Epic::new("".to_owned(), "".to_owned()))
+                .create_epic(Epic::new(String::new(), String::new()))
                 .unwrap();
             let story_id = db
-                .create_story(Story::new("".to_owned(), "".to_owned()), epic_id)
+                .create_story(Story::new(String::new(), String::new()), epic_id)
                 .unwrap();
 
             let page = StoryDetail {
@@ -396,10 +396,10 @@ mod tests {
             });
 
             let epic_id = db
-                .create_epic(Epic::new("".to_owned(), "".to_owned()))
+                .create_epic(Epic::new(String::new(), String::new()))
                 .unwrap();
             let story_id = db
-                .create_story(Story::new("".to_owned(), "".to_owned()), epic_id)
+                .create_story(Story::new(String::new(), String::new()), epic_id)
                 .unwrap();
 
             let page = StoryDetail {
@@ -417,10 +417,10 @@ mod tests {
             });
 
             let epic_id = db
-                .create_epic(Epic::new("".to_owned(), "".to_owned()))
+                .create_epic(Epic::new(String::new(), String::new()))
                 .unwrap();
             let _ = db
-                .create_story(Story::new("".to_owned(), "".to_owned()), epic_id)
+                .create_story(Story::new(String::new(), String::new()), epic_id)
                 .unwrap();
 
             let page = StoryDetail {
@@ -438,10 +438,10 @@ mod tests {
             });
 
             let epic_id = db
-                .create_epic(Epic::new("".to_owned(), "".to_owned()))
+                .create_epic(Epic::new(String::new(), String::new()))
                 .unwrap();
             let story_id = db
-                .create_story(Story::new("".to_owned(), "".to_owned()), epic_id)
+                .create_story(Story::new(String::new(), String::new()), epic_id)
                 .unwrap();
 
             let page = StoryDetail {

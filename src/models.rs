@@ -32,7 +32,7 @@ impl Display for Status {
             Status::Closed => "CLOSED",
         };
 
-        write!(f, "{}", status)
+        write!(f, "{status}")
     }
 }
 

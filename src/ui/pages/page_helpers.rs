@@ -9,7 +9,7 @@ pub fn get_column_string(text: &str, width: usize) -> String {
         }
         std::cmp::Ordering::Equal => text.to_owned(),
         std::cmp::Ordering::Greater => match width {
-            0 => "".to_owned(),
+            0 => String::new(),
             1 => ".".to_owned(),
             2 => "..".to_owned(),
             3 => "...".to_owned(),
@@ -31,7 +31,7 @@ mod tests {
 
         let width = 0;
 
-        assert_eq!(get_column_string(text4, width), "".to_owned());
+        assert_eq!(get_column_string(text4, width), String::new());
 
         let width = 1;
 

@@ -184,7 +184,7 @@ mod tests {
         let db = JiraDatabase {
             database: Box::new(MockDB::new()),
         };
-        let epic = Epic::new("".to_owned(), "".to_owned());
+        let epic = Epic::new(String::new(), String::new());
 
         let result = db.create_epic(epic.clone());
 
@@ -205,7 +205,7 @@ mod tests {
         let db = JiraDatabase {
             database: Box::new(MockDB::new()),
         };
-        let story = Story::new("".to_owned(), "".to_owned());
+        let story = Story::new(String::new(), String::new());
 
         let non_existent_epic_id = 999;
 
@@ -218,8 +218,8 @@ mod tests {
         let db = JiraDatabase {
             database: Box::new(MockDB::new()),
         };
-        let epic = Epic::new("".to_owned(), "".to_owned());
-        let story = Story::new("".to_owned(), "".to_owned());
+        let epic = Epic::new(String::new(), String::new());
+        let story = Story::new(String::new(), String::new());
 
         let result = db.create_epic(epic);
         assert!(result.is_ok());
@@ -257,8 +257,8 @@ mod tests {
         let db = JiraDatabase {
             database: Box::new(MockDB::new()),
         };
-        let epic = Epic::new("".to_owned(), "".to_owned());
-        let story = Story::new("".to_owned(), "".to_owned());
+        let epic = Epic::new(String::new(), String::new());
+        let story = Story::new(String::new(), String::new());
 
         let result = db.create_epic(epic);
         assert!(result.is_ok());
@@ -287,8 +287,8 @@ mod tests {
         let db = JiraDatabase {
             database: Box::new(MockDB::new()),
         };
-        let epic = Epic::new("".to_owned(), "".to_owned());
-        let story = Story::new("".to_owned(), "".to_owned());
+        let epic = Epic::new(String::new(), String::new());
+        let story = Story::new(String::new(), String::new());
 
         let result = db.create_epic(epic);
         assert!(result.is_ok());
@@ -311,8 +311,8 @@ mod tests {
         let db = JiraDatabase {
             database: Box::new(MockDB::new()),
         };
-        let epic = Epic::new("".to_owned(), "".to_owned());
-        let story = Story::new("".to_owned(), "".to_owned());
+        let epic = Epic::new(String::new(), String::new());
+        let story = Story::new(String::new(), String::new());
 
         let result = db.create_epic(epic);
         assert!(result.is_ok());
@@ -333,8 +333,8 @@ mod tests {
         let db = JiraDatabase {
             database: Box::new(MockDB::new()),
         };
-        let epic = Epic::new("".to_owned(), "".to_owned());
-        let story = Story::new("".to_owned(), "".to_owned());
+        let epic = Epic::new(String::new(), String::new());
+        let story = Story::new(String::new(), String::new());
 
         let result = db.create_epic(epic);
         assert!(result.is_ok());
@@ -380,7 +380,7 @@ mod tests {
         let db = JiraDatabase {
             database: Box::new(MockDB::new()),
         };
-        let epic = Epic::new("".to_owned(), "".to_owned());
+        let epic = Epic::new(String::new(), String::new());
 
         let result = db.create_epic(epic);
 
@@ -414,8 +414,8 @@ mod tests {
         let db = JiraDatabase {
             database: Box::new(MockDB::new()),
         };
-        let epic = Epic::new("".to_owned(), "".to_owned());
-        let story = Story::new("".to_owned(), "".to_owned());
+        let epic = Epic::new(String::new(), String::new());
+        let story = Story::new(String::new(), String::new());
 
         let result = db.create_epic(epic);
 
@@ -456,7 +456,7 @@ mod tests {
             let mut tmpfile = tempfile::NamedTempFile::new().unwrap();
 
             let file_contents = r#"{ "last_item_id": 0 epics: {} stories {} }"#;
-            write!(tmpfile, "{}", file_contents).unwrap();
+            write!(tmpfile, "{file_contents}").unwrap();
 
             let db = JSONFileDatabase {
                 file_path: tmpfile
@@ -476,7 +476,7 @@ mod tests {
             let mut tmpfile = tempfile::NamedTempFile::new().unwrap();
 
             let file_contents = r#"{ "last_item_id": 0, "epics": {}, "stories": {} }"#;
-            write!(tmpfile, "{}", file_contents).unwrap();
+            write!(tmpfile, "{file_contents}").unwrap();
 
             let db = JSONFileDatabase {
                 file_path: tmpfile
@@ -496,7 +496,7 @@ mod tests {
             let mut tmpfile = tempfile::NamedTempFile::new().unwrap();
 
             let file_contents = r#"{ "last_item_id": 0, "epics": {}, "stories": {} }"#;
-            write!(tmpfile, "{}", file_contents).unwrap();
+            write!(tmpfile, "{file_contents}").unwrap();
 
             let db = JSONFileDatabase {
                 file_path: tmpfile
